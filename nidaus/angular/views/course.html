@@ -1,0 +1,52 @@
+﻿<br />
+<div>
+    <button type="button" class="btn btn-rounded success-color-dark" data-toggle="modal" data-target="#courseInfo" data-whatever="@course">Add/Edit Course</button>
+    <div class="modal fade" id="courseInfo" tabindex="-1" role="dialog">
+        <form name="maintainCourse" ng-submit="saveCourse()" ng-show="showDiv">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="exampleModalLabel">Add/Edit Course</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <div class="col-md-4 col-form-label">
+                                Course Name:
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" required placeholder="Enter course name.." value="" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <div class="col-md-4 col-form-label">
+                                Training Provider:
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" name="actionType" ng-click="saveCourse()" value="Save Course" class="btn-floating btn-large green" id="saveCourse"><i class="fa fa-plus"></i></button>
+                        <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container-fluid">
+        <div ui-grid="{ data: myData }" class="myGrid"></div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$('.mdb-select').material_select();
+    });
+</script>

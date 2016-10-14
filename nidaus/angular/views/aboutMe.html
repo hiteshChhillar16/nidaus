@@ -1,0 +1,36 @@
+﻿
+<!--Section: Author box-->
+<section class="m-b-4">
+
+    <!--Author box-->
+    <div class="author-box animated slideInUp">
+
+        <div class="row">
+            <!--Name-->
+            <h3 class="h3-responsive text-xs-center">About Me</h3>
+            <hr>
+
+            <!--Avatar-->
+            <div class="col-xs-12 col-sm-2">
+                <img ng-src="{{adminInfo.Image}}" cl class="img-fluid img-circle z-depth-2">
+            </div>
+            <!--Author Data-->
+            <div class=" col-xs-12 col-sm-10">
+                <p><strong>{{adminInfo.Name}}</strong></p>
+                <div class="personal-sm">
+                    <span ng-repeat="si in adminInfo.socialInfo">
+                        <a class="{{si.classInfo}}" target="_blank" href="{{si.url}}"><i class="{{si.icon}}"> </i></a>
+                    </span>
+                </div>
+                <p>{{adminInfo.MainText}}</p>
+                <p class="hidden-md-down">
+                    {{adminInfo.Description}}
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <!--/.Author box-->
+
+</section>
+<!--/Section: Author box-->

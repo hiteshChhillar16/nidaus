@@ -1,0 +1,29 @@
+﻿<div ng-controller="commentController">
+    <div class="card card-block">
+        <h4 class="card-title">Comments</h4>
+
+
+        <div class="row" ng-repeat="comment in comments">
+            <div class="col-md-12">
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                &nbsp;<span><strong>{{comment.name}}</strong></span>:
+                &nbsp;<span>{{comment.text}}</span>
+                &nbsp;<span class="pull-right text-muted">{{comment.time | date : 'medium' }}</span>
+            </div>
+        </div>
+        <form name="commentForm" ng-submit="saveComment()">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" ng-model="commentText" size="30" required placeholder="add comment here here">
+                    </div>
+                    <div class="col-md-2">
+                        <!--<input class="btn btn-success form-control" ng-click="addComment()" type="submit" value="add">-->
+                        <button  type="submit" class="btn-floating btn-large green" href="#"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

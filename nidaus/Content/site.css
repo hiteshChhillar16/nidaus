@@ -1,0 +1,41 @@
+﻿/*Plugin Styles*/
+@import url('bootstrap.css');
+@import url('mdb.css');
+ 
+
+
+
+/*Styles for website material*/
+/*@import url('ui-grid.css');*/
+/*@import url('envelope-contact.css');*/
+
+
+
+/*html,
+    body,
+    header,
+    .view {
+        height: 100%;
+    }
+    /* Navigation*/
+    
+    /*.navbar {
+        background-color: transparent;
+    }*/
+    
+    /*.top-nav-collapse {
+        background-color: #4285F4;
+    }
+    @media only screen and (max-width: 768px) {
+        .navbar {
+            background-color: #4285F4;
+        }
+    }*/
+    /*Intro*/
+    /*.view {
+        background: url("http://mdbootstrap.com/images/regular/nature/img%20(54).jpg")no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }*/

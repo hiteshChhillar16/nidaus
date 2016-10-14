@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html ng-app="appTube">
+<head>
+    <title data-ng-bind>Nidaus App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" /> 
+    @*<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">          Pick one of the two based on testing on mobile applications*@
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <base href="/nidaus/">
+    <script type="text/javascript">
+        var webRoot = '@Url.Content("~")';
+
+    </script>
+
+</head>
+<body ng-controller="MainController">
+
+    <header>
+        @*Navigation Bar*@
+        <div ng-include="'angular/views/_navigation.html'"></div>
+    </header>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer class="page-footer center-on-small-only">
+        <div ng-include="'angular/views/_footer.html'"></div>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/material")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/common")
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBbobR-kMewUkqyEfZhj91D2UPe1obv5A&libraries=places" async defer></script>
+    @Scripts.Render("~/bundles/youtube")
+    @Scripts.Render("~/bundles/module")
+    @Scripts.Render("~/bundles/services")
+    @Scripts.Render("~/bundles/controllers")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
