@@ -124,9 +124,6 @@
                 travelMode: $scope.travel_mode
             }, function (response, status) {
                 if (status === 'OK') {
-                    alert('OK')
-                    $scope.textJson = JSON.stringify(response);
-                    alert($scope.textJson)
                     $scope.directionsDisplay.setDirections(response);
                 } else {
                     window.alert('Directions request failed due to ' + status);
