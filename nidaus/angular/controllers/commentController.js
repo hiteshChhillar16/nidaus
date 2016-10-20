@@ -8,8 +8,8 @@
     function comment($scope, $http) {
         $scope.commentText = '';
         $scope.comments = [
-        { text: 'learn angular', name: 'Hitesh Chhillar', time: 'Jun 12, 2016 05:26:27 AM' },
-        { text: 'build an angular app', name: 'Ved Parkash', time: 'Aug 10, 2016 06:18:56 PM' }, ];
+        { text: "Did they really have to blur that? That's just ridiculous.﻿", name: 'Hitesh Chhillar', time: 'Jun 12, 2016 05:26:27 AM' },
+        { text: 'Trump is going to win on November 28th﻿', name: 'Ved Parkash', time: 'Aug 10, 2016 06:18:56 PM' }, ];
 
         //code to add update comments
 

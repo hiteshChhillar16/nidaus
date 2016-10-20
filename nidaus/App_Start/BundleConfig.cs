@@ -70,6 +70,7 @@ namespace nidaus
                         "~/angular/controllers/contactInfoController.js",
                         "~/angular/controllers/courseController.js",
                         "~/angular/controllers/playtubeController.js",
+                        "~/angular/controllers/mapController.js",
                         "~/angular/controllers/tripController.js"
                        ));
 

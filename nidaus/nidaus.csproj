@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <ApplicationInsightsResourceId>/subscriptions/3dc9393f-e9f1-4cf4-bbea-359450549321/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/nidaus</ApplicationInsightsResourceId>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -251,6 +252,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\MapTrip.cs" />
     <Compile Include="Models\Trip.cs" />
     <Compile Include="Models\AdminInfo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -269,9 +271,11 @@
     <Compile Include="Utilities\MongoConnection.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="angular\controllers\mapController.js" />
     <Content Include="angular\controllers\tripController.js" />
     <Content Include="angular\services\apiCallService.js" />
     <Content Include="angular\services\rating.js" />
+    <Content Include="angular\views\map.html" />
     <Content Include="angular\views\trip.html" />
     <Content Include="angular\views\login.html" />
     <Content Include="angular\views\aboutMe.html" />

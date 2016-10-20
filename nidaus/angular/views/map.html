@@ -1,0 +1,54 @@
+﻿
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 description">
+            <div id="searchDirections"> <!--ng-show="showDirections"> ng-show="false"-->
+                <div class="card">
+                    <div class="card-header white-text">
+                        <ul class="nav nav-tabs md-pills pills-default pointer">
+                            <li class="nav-item" ng-click="setMode('DRIVING')">
+                                <span class="nav-link">
+                                    <span ng-class="{sel: travel_mode == 'DRIVING'}"><i class="fa fa-car fa-2x"></i><br> Driving</span>
+                                </span>
+                            </li>
+                            <li class="nav-item" ng-click="setMode('WALKING')">
+                                <span class="nav-link">
+                                    <span ng-class="{sel: travel_mode == 'WALKING'}"><i class="fa fa-heart fa-2x"></i><br> Walking</span>
+                                </span>
+
+                            </li>
+                            <li class="nav-item" ng-click="setMode('BICYCLING')">
+                                <span class="nav-link">
+                                    <span ng-class="{sel: travel_mode == 'BICYCLING'}"><i class="fa fa-bicycle fa-2x"></i><br> Bicycling</span>
+                                </span>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-block">
+                        <div id="locationField">
+                            <input id="start" class="autocomplete" placeholder="Choose starting point" type="text" />
+                        </div>
+
+                        <br />
+                        <div id="locationField">
+                            <input id="end" class="autocomplete" placeholder="Choose destination" type="text" />
+                        </div>
+                        <br />
+                        <a class="btn green" ng-click="setMode(travel_mode)">Get directions</a>
+                    </div>
+                </div>
+                <div class="" ng-show="true">
+                    <!--<h3 class="card-header primary-color white-text">Directions</h3>-->
+                    <div class="">
+                        <div id="directionsList" class="table table-responsive table-hover"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div id="map" class="z-depth-1-half map-container"></div>
+
+        </div>
+    </div>
+</div>

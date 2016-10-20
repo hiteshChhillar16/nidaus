@@ -10,7 +10,7 @@
                 params: {
                     key: 'AIzaSyCWHB819EpggLHIxfg-WAoni5YlhyjnbSI',
                     type: 'video',
-                    maxResults: 2,
+                    maxResults: 3,
                     part: 'id,snippet',
                     fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle',
                     q: searchText,

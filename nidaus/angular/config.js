@@ -2,7 +2,7 @@
 
 angular.module('appTube').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
-        .when("/", {
+        .when("/login", {
             templateUrl: webRoot + '/angular/views/login.html',
             controller: 'loginController'
         })
@@ -17,6 +17,10 @@ angular.module('appTube').config(['$routeProvider', '$locationProvider', functio
         .when("/course", {
             templateUrl: webRoot + '/angular/views/course.html',
             controller:'courseController'
+        })
+        .when("/map", {
+            templateUrl: webRoot + '/angular/views/map.html',
+            controller: 'mapController'
         })
         .when("/trip", {
             templateUrl: webRoot + '/angular/views/trip.html',

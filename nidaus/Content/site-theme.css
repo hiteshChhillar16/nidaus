@@ -40,7 +40,10 @@ ul.rating {
 /**Map Themes*/
 #map {
     width: 100%;
-    height: 400px;
+    height: 800px;
     background-color: grey;
+}
+.sel {
+    color:#2c7def
 }
 
