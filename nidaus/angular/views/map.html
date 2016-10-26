@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 description">
-            <div id="searchDirections"> <!--ng-show="showDirections"> ng-show="false"-->
+            <div id="searchDirections" ng-show="false"> <!--ng-show="showDirections"> ng-show="false"-->
                 <div class="card">
                     <div class="card-header white-text">
                         <ul class="nav nav-tabs md-pills pills-default pointer">
@@ -36,6 +36,8 @@
                         </div>
                         <br />
                         <a class="btn green" ng-click="setMode(travel_mode)">Get directions</a>
+                        <a class="btn btn-amber" ng-click="setMode(travel_mode)">Plan trip</a>
+                        <a class="btn btn-primary" ng-click="setMode(travel_mode)">My trips</a>
                     </div>
                 </div>
                 <div class="" ng-show="true">
@@ -45,6 +47,49 @@
                     </div>
                 </div>
             </div>
+
+            <div id="planTrip" ng-show="true">
+                <div class="card">
+                    <div class="card-block">
+
+                        <!--Header-->
+                        <div class="text-xs-center">
+                            <h3><i class="fa fa-binoculars"></i>&nbsp;Plan Trip</h3>
+                            <hr class="m-t-2 m-b-2">
+                        </div>
+
+                        <!--Body-->
+                        <p>Ready for adventure, then get set go!!</p>
+                        <br>
+
+                        <!--Body-->
+                        <div class="md-form">
+                            <i class="fa fa-map-pin prefix"></i>
+                            <input type="text" id="stopName" required class="form-control">
+                            <!--<label for="stopName">Stop name</label>-->
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-calendar prefix"></i>
+                            <input type="text" id="stopDate" class="form-control datepicker">
+                            <label for="stopDate">Date</label>
+                        </div>
+
+                       <div class="md-form">
+                            <i class="fa fa-pencil prefix"></i>
+                            <textarea type="text" id="stopDescription" class="md-textarea"></textarea>
+                            <label for="stopDescription">Description</label>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-default" ng-click="saveStop()">Save stop</button>
+                        </div>
+
+                    </div>
+                    <!--Naked Form-->
+                </div>
+            </div>
+
         </div>
         <div class="col-md-9">
             <div id="map" class="z-depth-1-half map-container"></div>
@@ -52,3 +97,5 @@
         </div>
     </div>
 </div>
+
+<div ng-bind="showAlert"></div>

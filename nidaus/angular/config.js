@@ -30,6 +30,6 @@ angular.module('appTube').config(['$routeProvider', '$locationProvider', functio
             templateUrl: webRoot + '/angular/views/contactInfo.html',
             controller:'contactInfoController'
         })
-        .otherwise({ redirectTo: "/playtube" });
+        .otherwise({ redirectTo: "/login" });
     //$locationProvider.html5Mode(true);
 }]);
