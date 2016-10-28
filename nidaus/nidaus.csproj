@@ -326,6 +326,7 @@
     <Content Include="Content\images\ved-parkash.jpg" />
     <Content Include="Content\login.css" />
     <Content Include="Content\mdb.css" />
+    <Content Include="Content\mdb\mdb-lightbox-ui.html" />
     <Content Include="Content\site-theme.css" />
     <Content Include="Content\ui-grid.css" />
     <Content Include="Content\ui-grid.min.css" />
@@ -1181,7 +1182,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\mdb\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

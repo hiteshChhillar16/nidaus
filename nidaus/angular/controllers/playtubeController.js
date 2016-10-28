@@ -96,6 +96,7 @@
         //code to add update comments
         $scope.addPlayList = function (videoId, title) {
             $scope.playlist.push({ title: title, videoId: videoId });
+            $scope.isDisabled = true;
         };
 
         $scope.removeSong = function (index) {

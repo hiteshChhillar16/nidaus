@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace nidaus.Controllers
+
+namespace nidaus
 {
 
     public class ValuesController : ApiController

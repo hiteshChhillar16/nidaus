@@ -1,11 +1,77 @@
-﻿
-<!--<h2 class="h2-responsive wow fadeInLeft">Planning for Road Trip?</h2>
-<hr class="hr-dark wow fadeInLeft" />
-<p class="wow fadeInLeft">Create you trip route and get set go!</p>-->
+﻿<div class="container-fluid" id="tripPlanner" ng-show="show==1">
+        <div class="row">
+            <div class="col-md-3">
+                <div id="planTrip" ng-show="true">
+                    <div class="card">
+                        <div class="card-block">
 
-<div class="container">
-    <section class="section">
-        <h1 class="section-heading">Manage trips</h1>
+                            <!--Header-->
+                            <div class="text-xs-center">
+                                <h3><i class="fa fa-binoculars"></i>&nbsp;Plan Trip</h3>
+                                <hr class="m-t-2 m-b-2">
+                            </div>
 
-    </section>
+                            <!--Body-->
+                            <p>Ready for adventure, then get set go!!</p>
+                            <br>
+
+                            <!--Body-->
+                            <div class="md-form">
+                                <i class="fa fa-map-pin prefix"></i>
+                                <input type="text" id="stopName" required class="form-control">
+                                <!--<label for="stopName">Stop name</label>-->
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fa fa-calendar prefix"></i>
+                                <input type="text" id="stopDate" class="form-control datepicker">
+                                <label for="stopDate">Date</label>
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fa fa-pencil prefix"></i>
+                                <textarea type="text" id="stopDescription" class="md-textarea"></textarea>
+                                <label for="stopDescription">Description</label>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-default" ng-click="addStop()">Add Stop</button>
+                            </div>
+
+                        </div>
+                        <!--Naked Form-->
+                    </div>
+                </div>
+                    <div class="card section" ng-repeat="st in stopNames">
+                        <div class="card-block">
+                            <h4 class="h4-responsive">{{st.stopName}}</h4>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="btn btn-amber pointer" ng-click="showPhotos(2, st)">View photos</div>
+                            </div>
+                        </div>
+                    </div>
+                    {{whole1}}
+             </div>
+            <div class="col-md-9">
+                <div id="tripMap" class="z-depth-1-half map-container"></div>
+
+            </div>
+        </div>
+  
 </div>
+
+
+<div class="container-fluid" id="stopInfo" ng-show="show==2">
+    {{whole1}}
+    <div class="btn btn-default pointer" ng-click="showMap(1)">
+        <i class="fa fa-arrow-left" ></i> Back to results
+    </div>
+    <figure class="col-md-4" ng-repeat="stopPhoto in photoUrls">
+        <img src="{{stopPhoto.url}}" class="img-fluid">
+    </figure>
+</div>
+
+
