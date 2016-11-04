@@ -30,7 +30,8 @@ namespace nidaus
                         "~/Scripts/angular-animate.js",
                         "~/Scripts/angular-touch.js",
                         "~/Scripts/angular-aria.js",
-                //"~/Scripts/angular-map.js",
+                        "~/Scripts/ngDraggable.js",
+                        //"~/Scripts/angular-map.js",
                         "~/Scripts/ui-grid.js"
                        ));
 
@@ -58,7 +59,8 @@ namespace nidaus
                         "~/angular/services/VideoUtility.js",
                         "~/angular/services/listYouTube.js",
                         "~/angular/services/rating.js",
-                        "~/angular/services/apiCallService.js"
+                        "~/angular/services/apiCallService.js",
+                        "~/angular/services/getMapDirPoints.js"
                        ));
 
             //<------Controller Scripts---------->

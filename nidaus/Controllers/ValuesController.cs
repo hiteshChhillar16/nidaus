@@ -53,23 +53,4 @@ namespace nidaus
 
     }
 
-
-    public class AdminInfo
-    {
-        //paste advanced as json class and it automatically creates class
-        public ObjectId _id { get; set; }
-        public string Name { get; set; }
-        public string ImageUrl { get; set; }
-        public string MainText { get; set; }
-        public string Description { get; set; }
-        public List<AdminStyleClass> listAdminClass { get; set; }
-    }
-
-    public class AdminStyleClass
-    {
-        public string UrlClass { get; set; }
-        public string IconClass { get; set; }
-        public string InfoClass { get; set; }
-    }
-
 }

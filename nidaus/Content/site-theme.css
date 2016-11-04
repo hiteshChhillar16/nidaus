@@ -57,3 +57,26 @@ ul.rating {
 .section h4 {
     font-weight: 400 !important;
 }
+
+.move {
+    cursor:move;
+}
+
+[ng-drop].drag-enter {
+    border: solid 5px rgb(167, 161, 161);
+}
+
+[ng-drag].dragging {
+    opacity: 0.5;
+}
+
+
+/*Scroll div box*/
+.scroll-box {
+position: relative;
+}
+.scrollspy-example {
+position: relative;
+overflow-y: scroll;
+height: 200px; 
+}

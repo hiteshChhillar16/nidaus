@@ -43,6 +43,7 @@
                     }
                 ).then(function () {
                     //call get reviews again
+                    toastr.success('Review saved successfully.');
                     ApiCall.getComments().then(onCommentsComplete);
                 });
                 $scope.reviewText = '';

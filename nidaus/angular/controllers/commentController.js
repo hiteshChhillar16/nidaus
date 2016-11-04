@@ -21,6 +21,7 @@
             else {
                 $scope.comments.push({ text: $scope.commentText, name: 'Anonymous', time: new Date() });
                 $scope.commentText = '';
+                toastr.success('Comment saved successfully.');
             }
         };
 

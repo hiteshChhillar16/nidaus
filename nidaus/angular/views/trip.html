@@ -1,77 +1,155 @@
-﻿<div class="container-fluid" id="tripPlanner" ng-show="show==1">
-        <div class="row">
-            <div class="col-md-3">
-                <div id="planTrip" ng-show="true">
-                    <div class="card">
-                        <div class="card-block">
+﻿<div class="container-fluid" id="tripPlanner" ng-show="true">
+    <div class="row">
+        <div class="col-md-3">
+            <div id="planTrip" ng-show="true">
+                <div class="card">
+                    <div class="card-block">
 
-                            <!--Header-->
-                            <div class="text-xs-center">
-                                <h3><i class="fa fa-binoculars"></i>&nbsp;Plan Trip</h3>
-                                <hr class="m-t-2 m-b-2">
-                            </div>
-
-                            <!--Body-->
-                            <p>Ready for adventure, then get set go!!</p>
-                            <br>
-
-                            <!--Body-->
-                            <div class="md-form">
-                                <i class="fa fa-map-pin prefix"></i>
-                                <input type="text" id="stopName" required class="form-control">
-                                <!--<label for="stopName">Stop name</label>-->
-                            </div>
-
-                            <div class="md-form">
-                                <i class="fa fa-calendar prefix"></i>
-                                <input type="text" id="stopDate" class="form-control datepicker">
-                                <label for="stopDate">Date</label>
-                            </div>
-
-                            <div class="md-form">
-                                <i class="fa fa-pencil prefix"></i>
-                                <textarea type="text" id="stopDescription" class="md-textarea"></textarea>
-                                <label for="stopDescription">Description</label>
-                            </div>
-
-                            <div>
-                                <button class="btn btn-default" ng-click="addStop()">Add Stop</button>
-                            </div>
-
+                        <!--Header-->
+                        <div class="text-xs-center">
+                            <h3><i class="fa fa-binoculars"></i>&nbsp;Plan Trip</h3>
+                            <hr class="m-t-2 m-b-2">
                         </div>
-                        <!--Naked Form-->
+
+                        <!--Body-->
+                        <p>Ready for adventure, then get set go!!</p>
+                        <br>
+
+                        <!--Body-->
+                        <div class="md-form">
+                            <i class="fa fa-map-pin prefix"></i>
+                            <input type="text" id="stopName" required class="form-control">
+                            <!--<label for="stopName">Stop name</label>-->
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-calendar prefix"></i>
+                            <input type="text" id="stopDate" class="form-control datepicker">
+                            <label for="stopDate">Date</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-pencil prefix"></i>
+                            <textarea type="text" id="stopDescription" class="md-textarea"></textarea>
+                            <label for="stopDescription">Description</label>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-default" ng-click="addStop()">Add Stop</button>
+                        </div>
+
                     </div>
+                    <!--Naked Form-->
                 </div>
-                    <div class="card section" ng-repeat="st in stopNames">
-                        <div class="card-block">
-                            <h4 class="h4-responsive">{{st.stopName}}</h4>
-                        </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="btn btn-amber pointer" ng-click="showPhotos(2, st)">View photos</div>
+            </div>
+            <div class="card" ng-show="showDirections">
+                <div class="card-block">
+                    <div class="pointer" ng-click="showDirections(toggle)"><h5 class="teal-text accent-2"><i class="fa fa-list" aria-hidden="true"></i> View Detailed Directions </h5></div>
+                    <blockquote class="blockquote bq-primary"><p class="bq-title">Total trip distance : {{totalDistance}} km</p></blockquote>
+                    <blockquote class="blockquote bq-success"><p class="bq-title">Total trip time : {{totalTime}} minutes</p></blockquote>
+                </div>
+            </div>
+
+            <div id="directionsList" ng-hide="true" class="table table-responsive table-hover"></div>
+
+            <div class="card section scroll-box">
+                <div class="card-block">
+                    <h4 class="h4-responsive text-primary">Trip Stops</h4>
+                </div>
+
+                <ul class="scrollspy-example z-depth-1">
+                    <li class="z-depth-3 move" ng-repeat="st in stopNames" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+
+                        <div class="card-block" ng-drag="true" ng-drag-data="st">
+                            <div class="content-wrapper row">
+                                <h4 class="h5-responsive">{{st.stopName}}</h4>
+                            </div>
+                            <div class="row">
+                                <div class="btn btn-success pointer pull-right z-depth-2" title="Coming soon" ng-click=""><i class="fa fa-bed" aria-hidden="true"></i></div>
+                                <div class="btn btn-amber pointer pull-right z-depth-2" title="View photos" ng-click="showPhotos(2, st)"><i class="fa fa-file-image-o" aria-hidden="true"></i></div>
+                                <div class="btn btn-warning pointer pull-right z-depth-2  overlay hm-white-slight" data-toggle="modal" data-target="#modal-register" title="View weather" ng-click="showWeather(3, st)"><i class="fa fa-sun-o" aria-hidden="true"></i></div>
                             </div>
                         </div>
-                    </div>
-                    {{whole1}}
-             </div>
-            <div class="col-md-9">
-                <div id="tripMap" class="z-depth-1-half map-container"></div>
-
+                    </li>
+                </ul>
             </div>
+
+            {{whole1}}
         </div>
-  
+        <div class="col-md-9">
+            <div id="tripMap" class="z-depth-1-half map-container"></div>
+
+        </div>
+    </div>
+
 </div>
 
 
 <div class="container-fluid" id="stopInfo" ng-show="show==2">
     {{whole1}}
-    <div class="btn btn-default pointer" ng-click="showMap(1)">
-        <i class="fa fa-arrow-left" ></i> Back to results
+    <div class="row">
+        <div class="btn btn-default pointer" ng-click="showMap(1)">
+            <i class="fa fa-arrow-left"></i> Back to results
+        </div>
     </div>
-    <figure class="col-md-4" ng-repeat="stopPhoto in photoUrls">
-        <img src="{{stopPhoto.url}}" class="img-fluid">
-    </figure>
+    <div class="row fadeIn" style="position:relative; height:1379px">
+        <div class="col-md-4 col-sm-6 fadeIn" ng-repeat="stopPhoto in photoUrls">
+            <figure class="">
+                <img src="{{stopPhoto.url}}" class="img-fluid">
+            </figure>
+        </div>
+
+    </div>
+
 </div>
 
-
+<!-- Modal Register -->
+<div class="modal section fade modal-ext" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="h3-responsive">
+                    <img src="http://openweathermap.org/img/w/{{weatherInfoShow.weather[0].icon}}.png" />
+                    {{weatherInfoShow.name}}
+                </h3>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <p class="text-fluid">The current weather update shows <span class="text-info font-weight-normal">{{weatherInfoShow.weather[0].description}}</span></p>
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix"></i>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            Temperature <span class="tag bg-primary label-pill float-xs-right">{{weatherInfoShow.main.temp}} F</span>
+                        </li>
+                        <li class="list-group-item">
+                            Pressure <span class="tag bg-primary label-pill float-xs-right">{{weatherInfoShow.main.pressure}}</span>
+                        </li>
+                        <li class="list-group-item">
+                            Humidity(%) <span class="tag bg-primary label-pill float-xs-right">{{weatherInfoShow.main.humidity}}</span>
+                        </li>
+                        <li class="list-group-item">
+                            Min temperature <span class="tag bg-primary label-pill float-xs-right">{{weatherInfoShow.main.temp_min}} F</span>
+                        </li>
+                        <li class="list-group-item">
+                            Max temperature <span class="tag bg-primary label-pill float-xs-right">{{weatherInfoShow.main.temp_max}} F</span>
+                        </li>
+                        <li class="list-group-item">
+                            Wind speed <span class="tag bg-primary label-pill float-xs-right">{{weatherInfoShow.wind.speed}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>

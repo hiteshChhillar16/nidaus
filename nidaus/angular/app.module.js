@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('appTube', ['youtube-embed', 'ngTouch', 'ui.grid', 'ngAnimate', 'ngRoute']);
+    angular.module('appTube', ['youtube-embed', 'ngTouch', 'ui.grid', 'ngAnimate', 'ngRoute', 'ngDraggable']);
 
 })();
