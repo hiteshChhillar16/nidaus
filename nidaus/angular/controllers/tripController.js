@@ -42,7 +42,7 @@
         $scope.totalTime = null;
         $scope.totalDistance = null;
         $scope.showDirections = false;
-
+        $scope.tripStops = false;
         var cleanStopName = function () {
 
             inputId_div.blur();
@@ -97,27 +97,33 @@
 
         //save stop in an array start
         $scope.addStop = function () {
-            var stopPlace1 = $scope.stop_autocomplete.getPlace();
-            if (!stopPlace1.geometry) {
-                window.alert("Autocomplete's returned place contains no geometry");
+
+            if (!$scope.saveStopForm.$valid) {
                 return;
             }
-            cleanStopName();
-            $scope.stopName = stopPlace1.formatted_address;
-            $scope.stopId = stopPlace1.place_id;
-            $scope.whole = JSON.stringify(stopPlace1)
-            var data = { stopName: $scope.stopName, stopId: $scope.stopId, stopLocation: stopPlace1.geometry.location, url: stopPlace1.url, photos: stopPlace1.photos };
+            else {
+                //alert('else')
+                var stopPlace1 = $scope.stop_autocomplete.getPlace();
+                if (!stopPlace1.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
 
-            $scope.stopNames.push(data);
-            //create route
+                $scope.stopName = stopPlace1.formatted_address;
+                $scope.stopId = stopPlace1.place_id;
+                //$scope.whole = JSON.stringify(stopPlace1)
+                var data = { stopName: $scope.stopName, stopId: $scope.stopId, stopLocation: stopPlace1.geometry.location, url: stopPlace1.url, photos: stopPlace1.photos };
 
-            $scope.updateRouteData($scope.stopNames);
+                $scope.stopNames.push(data);
 
+                $scope.updateRouteData($scope.stopNames);
 
-            //var legs = $scope.directionsServiceTrip.routes[0].legs;
-            //alert(JSON.stringify(legs))
-            toastr.success('Stop added successfully.');
-            cleanStopName();
+                toastr.success('Stop saved successfully.');
+                cleanStopName();
+
+                showTripStops($scope.stopNames);
+
+            }
         };
         //end stop save
 
@@ -140,6 +146,14 @@
             }
         }
 
+        function showTripStops(stopsArray)
+        {
+            if(stopsArray.length>0)
+                $scope.tripStops = true;
+            else
+                $scope.tripStops = false;
+        }
+
         $scope.updateRouteData = function (stopNames) {
             $scope.OriginId = getMapDirPoints.getOriginId(stopNames);
             $scope.DestinationId = getMapDirPoints.getDestinationId(stopNames);
@@ -157,6 +171,7 @@
                     avoidTolls: false
                 }, function (response, status) {
                     if (status == 'OK' && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+
                         $scope.totalDistance = (response.rows[0].elements[0].distance.value / 1000).toFixed(2);
                         $scope.totalTime = (response.rows[0].elements[0].duration.value / 60).toFixed(0);
                         $scope.showDirections = true;
@@ -189,6 +204,8 @@
 
 
             });
+
+            
         };
         //end update Route Data
 
@@ -200,10 +217,14 @@
             $scope.stopNames[otherIndex] = otherObj;
 
             $scope.updateRouteData($scope.stopNames);
-
             toastr.info('Route changed successfully.');
-
         }
+
+        $scope.removeStop = function (index) {
+            $scope.stopNames.splice(index, 1);
+            $scope.updateRouteData($scope.stopNames);
+            toastr.info('Route changed successfully.');
+        };
 
 
         $scope.photoUrls = [];
@@ -211,8 +232,9 @@
             $scope.show = option;
 
             var stopPlaceInfo = $scope.stop_autocomplete.getPlace();
+
             angular.forEach(stopInfo.photos, function (value, $index) {
-                $scope.photoUrls.push({ url: value.getUrl({ 'maxWidth': 544, 'maxHeight': 300 }) })
+                $scope.photoUrls.push({ url: value.getUrl({ 'maxWidth': 600, 'maxHeight': 300 }), stName: stopInfo.stopName })
             });
         }
 
@@ -232,9 +254,7 @@
 
             listYoutube.getWeatherInfo(latpl, lngpl).then(function successCallback(data) {
                 $scope.weatherInfoShow = data;
-                //$scope.whole1 = data;
-                //alert(JSON.stringify(data))
-                //toastr.info('View searched results.');
+
             });
 
         }

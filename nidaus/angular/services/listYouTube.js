@@ -21,6 +21,10 @@
         };
 
         var getWeatherInfo = function (lat, long) {
+
+            // weather.com api ab02eee7ad907240
+            //open weather api 7770373a1df40e0ffae7794fe796fbe0
+
             var urlWeather = 'http://api.openweathermap.org/data/2.5/weather?units=imperial&lat=' + lat + '&lon=' + long + '&APPID=7770373a1df40e0ffae7794fe796fbe0';
             //alert(urlWeather)
             return $http({

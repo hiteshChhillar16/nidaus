@@ -1,63 +1,70 @@
 ﻿<div class="container-fluid" id="tripPlanner" ng-show="true">
     <div class="row">
+        <!--Stop and trip columns info-->
         <div class="col-md-3">
-            <div id="planTrip" ng-show="true">
-                <div class="card">
-                    <div class="card-block">
 
-                        <!--Header-->
-                        <div class="text-xs-center">
-                            <h3><i class="fa fa-binoculars"></i>&nbsp;Plan Trip</h3>
-                            <hr class="m-t-2 m-b-2">
+            <!--Start add/edit stop information-->
+            <form name="saveStopForm" ng-submit="addStop()">
+                <div id="planTrip" ng-show="true">
+                    <div class="card">
+                        <div class="card-block">
+
+                            <!--Header-->
+                            <div class="text-xs-center">
+                                <h3><i class="fa fa-binoculars"></i>&nbsp;Plan Trip</h3>
+                                <hr class="m-t-2 m-b-2">
+                            </div>
+
+                            <!--Body-->
+                            <p>Ready for adventure, then get set go!!</p>
+                            <!--Body-->
+                            <div class="md-form">
+                                <i class="fa fa-map-pin prefix"></i>
+                                <input type="text" id="stopName" required class="form-control">
+                                <!--<label for="stopName">Stop name</label>-->
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fa fa-calendar prefix"></i>
+                                <input type="text" id="stopDate" class="form-control datepicker">
+                                <label for="stopDate">Date</label>
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fa fa-pencil prefix"></i>
+                                <textarea type="text" id="stopDescription" class="md-textarea"></textarea>
+                                <label for="stopDescription">Description</label>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-default" type="submit" >Add Stop</button>
+                            </div>
+
                         </div>
-
-                        <!--Body-->
-                        <p>Ready for adventure, then get set go!!</p>
-                        <br>
-
-                        <!--Body-->
-                        <div class="md-form">
-                            <i class="fa fa-map-pin prefix"></i>
-                            <input type="text" id="stopName" required class="form-control">
-                            <!--<label for="stopName">Stop name</label>-->
-                        </div>
-
-                        <div class="md-form">
-                            <i class="fa fa-calendar prefix"></i>
-                            <input type="text" id="stopDate" class="form-control datepicker">
-                            <label for="stopDate">Date</label>
-                        </div>
-
-                        <div class="md-form">
-                            <i class="fa fa-pencil prefix"></i>
-                            <textarea type="text" id="stopDescription" class="md-textarea"></textarea>
-                            <label for="stopDescription">Description</label>
-                        </div>
-
-                        <div>
-                            <button class="btn btn-default" ng-click="addStop()">Add Stop</button>
-                        </div>
-
+                        <!--Naked Form-->
                     </div>
-                    <!--Naked Form-->
                 </div>
-            </div>
+                <!--End add/edit stop information-->
+            </form>
+
+
+            <!--Start stop direction details information-->
             <div class="card" ng-show="showDirections">
                 <div class="card-block">
-                    <div class="pointer" ng-click="showDirections(toggle)"><h5 class="teal-text accent-2"><i class="fa fa-list" aria-hidden="true"></i> View Detailed Directions </h5></div>
+                    <div class="btn btn-success pointer pull-right z-depth-2  overlay hm-white-slight" data-toggle="modal" data-target="#modal-directions" title="View directions"><i class="fa fa-list"></i></div>
                     <blockquote class="blockquote bq-primary"><p class="bq-title">Total trip distance : {{totalDistance}} km</p></blockquote>
                     <blockquote class="blockquote bq-success"><p class="bq-title">Total trip time : {{totalTime}} minutes</p></blockquote>
                 </div>
             </div>
+            <!--End stop direction details information-->
 
-            <div id="directionsList" ng-hide="true" class="table table-responsive table-hover"></div>
-
-            <div class="card section scroll-box">
+            <!--View stops information-->
+            <div class="card section" ng-show="tripStops">
                 <div class="card-block">
                     <h4 class="h4-responsive text-primary">Trip Stops</h4>
                 </div>
 
-                <ul class="scrollspy-example z-depth-1">
+                <ul class="z-depth-1">
                     <li class="z-depth-3 move" ng-repeat="st in stopNames" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
 
                         <div class="card-block" ng-drag="true" ng-drag-data="st">
@@ -65,42 +72,65 @@
                                 <h4 class="h5-responsive">{{st.stopName}}</h4>
                             </div>
                             <div class="row">
+                                <div class="btn btn-danger pointer pull-right z-depth-2" title="Remove stop" ng-click="removeStop($index)"><i class="fa fa-remove" aria-hidden="true"></i></div>
                                 <div class="btn btn-success pointer pull-right z-depth-2" title="Coming soon" ng-click=""><i class="fa fa-bed" aria-hidden="true"></i></div>
-                                <div class="btn btn-amber pointer pull-right z-depth-2" title="View photos" ng-click="showPhotos(2, st)"><i class="fa fa-file-image-o" aria-hidden="true"></i></div>
+                                <div class="btn btn-amber pointer pull-right z-depth-2  overlay hm-white-slight" data-toggle="modal" data-target="#modal-photos" title="View photos" ng-click="showPhotos(3, st)"><i class="fa fa-file-image-o" aria-hidden="true"></i></div>
                                 <div class="btn btn-warning pointer pull-right z-depth-2  overlay hm-white-slight" data-toggle="modal" data-target="#modal-register" title="View weather" ng-click="showWeather(3, st)"><i class="fa fa-sun-o" aria-hidden="true"></i></div>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
+            <!--End View stops information-->
 
-            {{whole1}}
         </div>
+        <!--End Stop and trip columns info-->
+
+        <!--View Google Map-->
         <div class="col-md-9">
             <div id="tripMap" class="z-depth-1-half map-container"></div>
-
         </div>
+        <!--End Google Map div-->
+
     </div>
 
 </div>
 
-
-<div class="container-fluid" id="stopInfo" ng-show="show==2">
-    {{whole1}}
-    <div class="row">
-        <div class="btn btn-default pointer" ng-click="showMap(1)">
-            <i class="fa fa-arrow-left"></i> Back to results
+<!--Detailed directions-->
+<div class="modal section fade modal-ext" id="modal-directions" tabindex="-1" role="dialog" aria-labelledby="directionsLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="h5-responsive font-weight-bold">List of directions</h4>
+            </div>
+            <div class="modal-body">
+                <div id="directionsList" class="table table-responsive table-hover"></div>
+            </div>
         </div>
     </div>
-    <div class="row fadeIn" style="position:relative; height:1379px">
-        <div class="col-md-4 col-sm-6 fadeIn" ng-repeat="stopPhoto in photoUrls">
-            <figure class="">
-                <img src="{{stopPhoto.url}}" class="img-fluid">
-            </figure>
+</div>
+<!--End detailed directions modal popup-->
+
+<!--Stop Photos-->
+
+<div class="modal section fade modal-ext" id="modal-photos" tabindex="-1" role="dialog" aria-labelledby="photosLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="h5-responsive text-primary">View {{photoUrls[0].stName}} Photos</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row fadeIn">
+                    <div class="col-md-4 col-sm-6 fadeIn" ng-repeat="stopPhoto in photoUrls">
+                        <figure class="">
+                            <img src="{{stopPhoto.url}}" style="width:600px;height:300px;" class="img-fluid">
+                        </figure>
+                    </div>
+
+                </div>
+            </div>
         </div>
-
     </div>
-
 </div>
 
 <!-- Modal Register -->
