@@ -97,33 +97,27 @@
 
         //save stop in an array start
         $scope.addStop = function () {
-
-            if (!$scope.saveStopForm.$valid) {
+            //alert('else')
+            var stopPlace1 = $scope.stop_autocomplete.getPlace();
+            if (!stopPlace1.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
                 return;
             }
-            else {
-                //alert('else')
-                var stopPlace1 = $scope.stop_autocomplete.getPlace();
-                if (!stopPlace1.geometry) {
-                    window.alert("Autocomplete's returned place contains no geometry");
-                    return;
-                }
 
-                $scope.stopName = stopPlace1.formatted_address;
-                $scope.stopId = stopPlace1.place_id;
-                //$scope.whole = JSON.stringify(stopPlace1)
-                var data = { stopName: $scope.stopName, stopId: $scope.stopId, stopLocation: stopPlace1.geometry.location, url: stopPlace1.url, photos: stopPlace1.photos };
+            $scope.stopName = stopPlace1.formatted_address;
+            $scope.stopId = stopPlace1.place_id;
+            //$scope.whole = JSON.stringify(stopPlace1)
+            var data = { stopName: $scope.stopName, stopId: $scope.stopId, stopLocation: stopPlace1.geometry.location, url: stopPlace1.url, photos: stopPlace1.photos };
 
-                $scope.stopNames.push(data);
+            $scope.stopNames.push(data);
 
-                $scope.updateRouteData($scope.stopNames);
+            $scope.updateRouteData($scope.stopNames);
 
-                toastr.success('Stop saved successfully.');
-                cleanStopName();
+            toastr.success('Stop saved successfully.');
+            cleanStopName();
 
-                showTripStops($scope.stopNames);
+            showTripStops($scope.stopNames);
 
-            }
         };
         //end stop save
 
@@ -230,7 +224,7 @@
         $scope.photoUrls = [];
         $scope.showPhotos = function (option, stopInfo) {
             $scope.show = option;
-
+            $scope.photoUrls = [];
             var stopPlaceInfo = $scope.stop_autocomplete.getPlace();
 
             angular.forEach(stopInfo.photos, function (value, $index) {
@@ -259,15 +253,7 @@
 
         }
 
-
-
-
-
-        $scope.showMap = function (option) {
-            $scope.show = option;
-            $scope.photoUrls = [];
-        }
-        
+      
 
     };/*<--!--//function end-->>>*/
     
