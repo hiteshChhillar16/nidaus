@@ -82,12 +82,12 @@
 
         //Play list 
         $scope.playlist = [
-                            { title: 'Drive Slow ft. Badshah', videoId: 'mePu74AKLDc' },
+                            { title: 'Drive Slow ft. Badshah', videoId: 'mePu74AKLDc', iconUrl: 'https://i.ytimg.com/vi/mePu74AKLDc/default.jpg' },
         ];
 
         //code to add update comments
-        $scope.addPlayList = function (videoId, title) {
-            $scope.playlist.push({ title: title, videoId: videoId });
+        $scope.addPlayList = function (videoId, title, icon) {
+            $scope.playlist.push({ title: title, videoId: videoId, iconUrl:icon });
             toastr.success('Video added to the playlist.');
         };
 
